@@ -1,0 +1,149 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// create profile model
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
+}
+
+// create course model
+model Course {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  couse_name  String
+  description String
+  enrollments Enrollment[]
+  courseDetails CourseDetails[]
+  quizzes Quiz[]
+  comments Comment[]
+  reviews Review[]
+}
+
+// create course details model
+model CourseDetails {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+  content   String
+  video_url String?
+  progress  Progress[]
+}
+
+// create quizzes to course
+model Quiz {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+  questions Question[]
+}
+
+// create question model
+model Question {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  quiz      Quiz     @relation(fields: [quizId], references: [id])
+  quizId    Int
+  question  String
+  options   Option[]
+}
+
+// create option model
+model Option {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  question  Question @relation(fields: [questionId], references: [id])
+  questionId Int
+  option    String
+  isCorrect Boolean
+}
+
+// create progress model for every coursedetails
+model Progress {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User     @relation(fields: [userId], references: [id])
+  userId        Int
+  courseDetails CourseDetails @relation(fields: [courseDetailsId], references: [id])
+  courseDetailsId Int
+  isCompleted   Boolean
+}
+
+// create enrollment model
+model Enrollment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+}
+
+// create comment model for every course
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+  comment   String
+}
+
+// add also review model for every course
+model Review {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+  rating    Int
+  review    String
+}
+
+// create user model
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  name      String?
+  password  String
+  role      Role     @default(STUDENT)
+  profile   Profile?
+  enrollments Enrollment[]
+  progress   Progress[]
+  comments   Comment[]
+  reviews    Review[]
+}
+
+enum Role {
+  ADMIN
+  STUDENT
+}
