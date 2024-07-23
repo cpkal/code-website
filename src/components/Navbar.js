@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Button from "./Button";
+import { getServerSession } from "next-auth";
+import { signOut } from "next-auth/react";
+import ProfileIcon from "./ProfileIcon";
 
-export function Navbar() {
+export async function Navbar() {
+  const session = await getServerSession();
   return (
     <nav className="px-4 py-3 shadow flex">
       {/* create navbar items consist of logo, search input, 3 link text and login and sign in button */}
@@ -16,10 +20,8 @@ export function Navbar() {
         <Link href="/course" className="px-2">Link 2</Link>
         <Link href="/course" className="px-2">Link 3</Link>
       </div>
-      <div className="flex-1">
-        <Button isPrimary="true" src="/auth/login">Login</Button>
-        <Button isPrimary="false" src="/auth/register">Register</Button>
-      </div>
+      <ProfileIcon />
+   
     </nav>
   );
 }

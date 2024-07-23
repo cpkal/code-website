@@ -1,7 +1,9 @@
 import Banner from "@/components/Banner";
 import { Navbar } from "@/components/Navbar";
+import { getServerSession } from "next-auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession();
   return (
     <main>
       <Navbar />
@@ -9,6 +11,12 @@ export default function Home() {
       <div className="p-16">
         <div className="grid grid-cols-2 gap-3">
           <div>
+            {session ? (
+              <h1 className="text-2xl font-bold">Welcome, {session.user.email}</h1>
+            ) : (
+              <h1 className="text-2xl font-bold">Welcome, Guest</h1>
+            )
+            }
             <h2 className="text-2xl font-bold">Esse ipsum minim amet eu exercitation laboris.</h2>
             <p className="text-sm mt-2">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor. Aliqua elit qui veniam duis nulla consequat qui. Et aliquip ea exercitation fugiat occaecat adipisicing. Elit nulla irure ex magna sint elit reprehenderit dolore enim laboris labore. In minim do do labore laborum elit dolor qui ullamco ea reprehenderit reprehenderit excepteur. Commodo nostrud ex esse ut amet dolore dolor.</p>
           </div>
