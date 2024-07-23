@@ -20,13 +20,13 @@ export default function ProfileIcon() {
   
   return (
     <div className="flex-1">
-      <div className="flex items-center bg" onClick={() => signOut()}>
+      <div className="flex items-center float-right" onClick={() => signOut()}>
+        <span className="mr-2">{session.data?.user?.name}</span>
         <img
           src="https://via.placeholder.com/150"
           className="rounded-full h-10 w-10 object-cover"
           alt="Profile"
         />
-        <span className="ml-2">{session.data?.user?.name}</span>
       </div>
     </div>
   );
