@@ -1,6 +1,8 @@
 import Banner from "@/components/Banner";
+import Button from "@/components/Button";
 import { Navbar } from "@/components/Navbar";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -8,55 +10,91 @@ export default async function Home() {
     <main>
       <Navbar />
       <Banner />
-      <div className="p-16">
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            {session ? (
-              <h1 className="text-2xl font-bold">Welcome, {session.user.email}</h1>
-            ) : (
-              <h1 className="text-2xl font-bold">Welcome, Guest</h1>
-            )
-            }
-            <h2 className="text-2xl font-bold">Esse ipsum minim amet eu exercitation laboris.</h2>
-            <p className="text-sm mt-2">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor. Aliqua elit qui veniam duis nulla consequat qui. Et aliquip ea exercitation fugiat occaecat adipisicing. Elit nulla irure ex magna sint elit reprehenderit dolore enim laboris labore. In minim do do labore laborum elit dolor qui ullamco ea reprehenderit reprehenderit excepteur. Commodo nostrud ex esse ut amet dolore dolor.</p>
+      <div className="px-16 mt-16">
+        <div className="flex">
+          <div className="w-2/3">
+            <h2 className="text-2xl font-bold text-balance">Esse ipsum minim amet eu exercitation laboris.</h2>
+            <p className="text-sm mt-2"> Dolore sit enim et pariatur do do reprehenderit. Eu veniam cupidatat id cupidatat aute ut non consequat duis sint sit do id et. Ex ipsum consequat quis adipisicing. Non consectetur aute qui velit laborum dolore nostrud officia. Reprehenderit elit tempor consectetur dolore deserunt sunt laborum eu fugiat ut. Id ad nostrud esse ad sint nisi labore mollit nostrud anim tempor officia et sunt. Irure quis laborum sit laborum nostrud amet aliqua magna sit sit consequat voluptate adipisicing tempor.</p>
+            <Button>Hello</Button>
           </div>
-          <div className="pl-24"> 
-            <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full" alt="Placeholder" />
+          <div className="flex w-1/3 ml-24"> 
+            <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full rounded" alt="Placeholder" />
           </div>
         </div>
       </div>
 
-      <div className="p-16 bg-gray-100">
-        <div className="grid grid-cols-2 gap-3">
-          <div className="pr-24"> 
-            <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full" alt="Placeholder" />
+      <div className="px-16 mt-16">
+        <div className="flex">
+          <div className="flex w-1/3 mr-24"> 
+            <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full rounded" alt="Placeholder" />
           </div>
-          <div>
-            <h2 className="text-2xl font-bold">Esse ipsum minim amet eu exercitation laboris.</h2>
-            <p className="text-sm mt-2">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor. Aliqua elit qui veniam duis nulla consequat qui. Et aliquip ea exercitation fugiat occaecat adipisicing. Elit nulla irure ex magna sint elit reprehenderit dolore enim laboris labore. In minim do do labore laborum elit dolor qui ullamco ea reprehenderit reprehenderit excepteur. Commodo nostrud ex esse ut amet dolore dolor.</p>
+          <div className="w-2/3">
+            <h2 className="text-2xl font-bold text-balance">Esse ipsum minim amet eu exercitation laboris.</h2>
+            <p className="text-sm mt-2"> Dolore sit enim et pariatur do do reprehenderit. Eu veniam cupidatat id cupidatat aute ut non consequat duis sint sit do id et. Ex ipsum consequat quis adipisicing. Non consectetur aute qui velit laborum dolore nostrud officia. Reprehenderit elit tempor consectetur dolore deserunt sunt laborum eu fugiat ut. Id ad nostrud esse ad sint nisi labore mollit nostrud anim tempor officia et sunt. Irure quis laborum sit laborum nostrud amet aliqua magna sit sit consequat voluptate adipisicing tempor.</p>
+            <Button>Hello</Button>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col items-center mb-24">
-        <h2 className="text-2xl font-bold">Esse ipsum minim amet eu exercitation laboris.</h2>
-        <div className="grid grid-cols-3 gap-4 px-24 py-4">
+      <div className="px-16 mb-16 mt-16">
+        <h2 className="text-2xl font-semibold text-center">Esse ipsum minim amet eu exercitation laboris.</h2>
+        <div className="grid grid-cols-3 mt-4">
           {/* create 3 cards */}
-          <div className="bg-white shadow rounded p-4">
+          <div className="bg-white shadow rounded mx-1">
             <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full" alt="Placeholder" />
-            <h3 className="text-lg font-bold mt-2">Card 1</h3>
-            <p className="text-sm mt-2">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor.</p>
           </div>
-          <div className="bg-white shadow rounded p-4">
+          <div className="bg-white shadow rounded mx-1">
             <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full" alt="Placeholder" />
-            <h3 className="text-lg font-bold mt-2">Card 1</h3>
-            <p className="text-sm mt-2">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor.</p>
           </div>
-          <div className="bg-white shadow rounded p-4">
+          <div className="bg-white shadow rounded mx-1">
             <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full" alt="Placeholder" />
-            <h3 className="text-lg font-bold mt-2">Card 1</h3>
-            <p className="text-sm mt-2">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor.</p>
           </div>
+        </div>
+      </div>
+
+      <div className="px-16 mb-16 mt-16">
+        <h2 className="text-2xl font-semibold">Esse ipsum minim amet eu exercitation laboris.</h2>
+        <div className="grid grid-cols-4 gap-2 mt-3">
+          {/* create 3 cards */}
+          <Link href="/course/detail">
+            <div className="bg-white shadow rounded border transition hover:ease-in duration-300">
+              <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full rounded" alt="Placeholder" />
+              <div className="p-2">
+                <h3 className="text-sm font-semibold mt-2">Aute voluptate do anim minim sit.</h3>
+                <p className="text-xs my-1">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor.</p>
+              </div>
+            </div>
+          </Link>
+
+          <Link href="/course/detail">
+            <div className="bg-white shadow rounded border transition hover:ease-in duration-300">
+              <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full rounded" alt="Placeholder" />
+              <div className="p-2">
+                <h3 className="text-sm font-semibold mt-2">Aute voluptate do anim minim sit.</h3>
+                <p className="text-xs my-1">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor.</p>
+              </div>
+            </div>
+          </Link>
+
+          <Link href="/course/detail">
+            <div className="bg-white shadow rounded border transition hover:ease-in duration-300">
+              <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full rounded" alt="Placeholder" />
+              <div className="p-2">
+                <h3 className="text-sm font-semibold mt-2">Aute voluptate do anim minim sit.</h3>
+                <p className="text-xs my-1">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor.</p>
+              </div>
+            </div>
+          </Link>
+
+          <Link href="/course/detail">
+            <div className="bg-white shadow rounded border transition hover:ease-in duration-300">
+              <img src="https://via.placeholder.com/150" className="object-cover h-40 w-full rounded" alt="Placeholder" />
+              <div className="p-2">
+                <h3 className="text-sm font-semibold mt-2">Aute voluptate do anim minim sit.</h3>
+                <p className="text-xs my-1">Est velit incididunt fugiat sint exercitation laboris mollit ut tempor.</p>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
 
