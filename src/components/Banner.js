@@ -5,7 +5,7 @@ const imageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/29
 export default function Banner() {
   return (
     <div className="flex justify-center items-center text-white">
-      <img src={imageUrl} alt="Banner" width={1920} height={1080} />
+      <img src="https://via.placeholder.com/1200" alt="Banner" className="w-full h-64" />
     </div>
   );
 }

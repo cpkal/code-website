@@ -14,7 +14,7 @@ export default function ProfileIcon() {
 
   if(session.status === "unauthenticated") {
     return (
-      <div className="flex-1">
+      <div className="flex-1 invisible md:visible">
         <div className="flex items-center float-right p-1">
           <Button isPrimary="true" src="/auth/login">Login</Button>
           <Button isPrimary="false" src="/auth/register">Register</Button>
@@ -25,7 +25,7 @@ export default function ProfileIcon() {
   
   return (
     <>
-      <div className="flex-1">
+      <div className="flex-1 hidden md:inline-block">
         <div className="flex items-center float-right p-1" onClick={() => setIsShowSignout(!isShowSignout)}>
           <span className="mr-2">{session.data?.user?.name}</span>
           <img

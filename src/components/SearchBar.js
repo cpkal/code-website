@@ -19,11 +19,13 @@ export default function SearchBar() {
 	}
 
 	return(
-		<>
-			<FontAwesomeIcon icon={faSearch} height={15} width={15} className="translate-x-4 text-foreground" />
-			<input type="text"  className="border-b-2 focus:outline-none focus:border-b-2 focus:border-sky-500 pl-6" onFocus={handleFocus} onBlur={handleBlur} />
+		<div className="relative">
+			<div className="flex">
+        <FontAwesomeIcon icon={faSearch} height={15} width={15} className="translate-x-4 translate-y-1 text-foreground" />
+        <input type="text"  className="border-b-2 focus:outline-none focus:border-b-2 focus:border-sky-500 pl-6 bg-background" onFocus={handleFocus} onBlur={handleBlur} />
+      </div>
 			{ focus && (
-				<div className="absolute w-auto bg-white border-accent border-4 rounded">
+				<div className="absolute w-full bg-white border-accent border-4 rounded">
 					<ul>
 						<li className="p-2 border-b">Item 1</li>
 						<li className="p-2 border-b">Item 2</li>
@@ -32,6 +34,6 @@ export default function SearchBar() {
 				</div>
 			)
 			}
-		</>
+		</div>
 	)
 }

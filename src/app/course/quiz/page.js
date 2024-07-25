@@ -8,7 +8,7 @@ export default function Course() {
       <Navbar />
       <div className="flex justify-center h-screen">
         {/* sidebar */}
-        <div className="w-1/6 box-border sticky top-0">
+        <div className="w-2/6 md:w-1/6 box-border sticky top-0">
           <div className="p-2">
             <h1 className="text-center font-bold text-foreground line-">Belajar HTML untuk pemula hingga mahir</h1>
           </div>
