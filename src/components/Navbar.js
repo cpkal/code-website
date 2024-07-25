@@ -10,7 +10,7 @@ export async function Navbar() {
 
 
   return (
-    <nav className="px-3 py-1 shadow flex items-center">
+    <nav className="px-3 py-1 shadow flex items-center sticky top-0 bg-background z-50">
       {/* create navbar items consist of logo, search input, 3 link text and login and sign in button */}
       <div className="flex-1">
         <Link href="/" className="text-lg font-bold text-foreground">Logo</Link>

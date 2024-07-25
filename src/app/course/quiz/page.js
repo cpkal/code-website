@@ -1,4 +1,6 @@
 import { Navbar } from "@/components/Navbar";
+import { faCircle, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Course() {
 	return (
@@ -6,11 +8,34 @@ export default function Course() {
       <Navbar />
       <div className="flex justify-center h-screen">
         {/* sidebar */}
-        <div className="w-1/6 border sticky top-0">
-          <div className="border bg-gray-200 py-3 px-3">Modul 1</div>
-          <div className="border py-3 px-3">Modul 2</div>
-          <div className="border py-3 px-3">Quiz 1</div>
-          <div className="border py-3 px-3">Modul 3</div>
+        <div className="w-1/6 box-border sticky top-0">
+          <div className="p-2">
+            <h1 className="text-center font-bold text-foreground line-">Belajar HTML untuk pemula hingga mahir</h1>
+          </div>
+          <div className="border py-3 px-3 text-sm font-medium text-white bg-foreground items-center flex">
+            <h3>Modul 1</h3>
+            <FontAwesomeIcon icon={faCircle} className="text-yellow-500 ml-2 absolute right-4" />
+          </div>
+          <div className="border py-3 px-3 text-sm font-medium items-center flex bg-gray-100">
+            <h3>Modul 2</h3>
+            <FontAwesomeIcon icon={faLock} className="text-black-500 ml-2 absolute right-4" />
+          </div>
+          <div className="border py-3 px-3 text-sm font-medium items-center flex bg-gray-100">
+            <h3>Modul 2</h3>
+            <FontAwesomeIcon icon={faLock} className="text-black-500 ml-2 absolute right-4" />
+          </div>
+          <div className="border py-3 px-3 text-sm font-medium items-center flex bg-gray-100">
+            <h3>Modul 2</h3>
+            <FontAwesomeIcon icon={faLock} className="text-black-500 ml-2 absolute right-4" />
+          </div>
+          <div className="border py-3 px-3 text-sm font-medium items-center flex bg-gray-100">
+            <h3>Modul 2</h3>
+            <FontAwesomeIcon icon={faLock} className="text-black-500 ml-2 absolute right-4" />
+          </div>
+          <div className="border py-3 px-3 text-sm font-medium items-center flex bg-gray-100">
+            <h3>Modul 2</h3>
+            <FontAwesomeIcon icon={faLock} className="text-black-500 ml-2 absolute right-4" />
+          </div>
         </div>
         {/* main content */}
         <div className="w-5/6 p-4">

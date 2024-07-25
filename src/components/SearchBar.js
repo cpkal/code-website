@@ -1,5 +1,7 @@
 'use client'
 
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 export default function SearchBar() {
@@ -18,7 +20,8 @@ export default function SearchBar() {
 
 	return(
 		<>
-			<input type="text"  className="w-full border-accent border-4 rounded" onFocus={handleFocus} onBlur={handleBlur} />
+			<FontAwesomeIcon icon={faSearch} height={15} width={15} className="translate-x-4 text-foreground" />
+			<input type="text"  className="border-b-2 focus:outline-none focus:border-b-2 focus:border-sky-500 pl-6" onFocus={handleFocus} onBlur={handleBlur} />
 			{ focus && (
 				<div className="absolute w-auto bg-white border-accent border-4 rounded">
 					<ul>

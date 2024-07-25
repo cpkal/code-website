@@ -24,11 +24,43 @@
 body {
   color: rgb(var(--text));
   background-color: rgb(var(--background));
+  box-sizing: border-box;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .bg-foreground {
+    background-color: rgb(var(--foreground));
+  }
+  .bg-dark-accent {
+    background-color: rgb(var(--dark-accent));
+  }
+  .bg-background {
+    background-color: rgb(var(--background));
+  }
+  .text-foreground {
+    color: rgb(var(--foreground));
+  }
+  .text-on-dark-accent {
+    color: rgb(var(--background));
+  }
+  .text-dark-accent {
+    color: rgb(var(--dark-accent));
+  }
+  .text-light-accent {
+    color: rgb(var(--light-accent));
+  }
+  .shadow-foreground {
+    /* box-shadow: 0 0 0 3px rgb(var(--foreground)); */
+  
+    /* add blur to color shadow */
+    /* box-shadow: 0 0 0 3px rgba(var(--foreground), 0.4); */
+    /* add more effect to this */
+    /* box-shadow: 0 0 0 3px rgba(var(--foreground), 0.4), 0 0 0 6px rgba(var(--foreground), 0.2); */
+    /* more effect pls */
+    box-shadow: 0 0 0 3px rgba(var(--foreground), 0.4), 0 0 0 6px rgba(var(--foreground), 0.2), 0 0 0 9px rgba(var(--foreground), 0.1);
   }
 }
 
